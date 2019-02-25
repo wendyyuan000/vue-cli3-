@@ -14,6 +14,7 @@ axios.defaults.baseURL='http://www.litc.pro:9999/v1'
 //设置cookie跨域(验证码的发送)
 axios.defaults.withCredentials = true
 
+//axios拦截器
 //请求拦截  (可以设置请求头)
 axios.interceptors.request.use(function (config) {
   let token = localStorage.getItem('token')   
