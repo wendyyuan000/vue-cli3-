@@ -37,7 +37,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 3. 服务器返回token和当前用户信息, 将其存储到localStorage中
 4. 提醒用户登录成功, 跳转到首页
 
-  * [ ] 注册
+  * [ ] 注册  1.axios全局配置或请求拦截中配置cookie跨域的配置(验证码) 
+                  1.拦截器配置:config.withcredentials=true
+                  2.全局配置:axios.defaults.withCredentials = true
+
+              2.注册成功存储token和userInfo,直接跳转到home页面 
   * [x] 注销
 
 技术栈

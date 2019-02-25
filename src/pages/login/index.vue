@@ -11,6 +11,7 @@
 
             <el-form-item>
                 <el-button type="primary" @click="login">登录</el-button>
+                <router-link to="/register">未登录,去注册</router-link>
             </el-form-item>
         </el-form>
     </div>
@@ -29,7 +30,13 @@
           let username = this.username
           let password = this.password
           this.$http.post('users/login',{username,password}).then(result=>{
-            //   console.dir(result)
+              // console.dir(result)
+              if(username.trim().length==0 || password.trim().length==0){
+                  return this.$message({
+                      type:'error',
+                      message:'用户名或密码不能为空'
+                  })
+              }
               //登录成功
               //1.设置localstorage
               localStorage.setItem('token',result.data.token)
@@ -42,11 +49,20 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
     .loginContainer{
         width: 600px;
         // border:1px solid #ccc;
         margin:200px auto;
         text-align: center;
+        .el-form-item__content{
+            display: flex;
+            justify-content: center;
+            a{
+                color: #409EFF;
+                margin-left: 30px;
+                text-decoration: underline
+            }
+        }
     }
 </style>
